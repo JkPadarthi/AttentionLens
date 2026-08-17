@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: attentionlens
+Version: 0.1.0
+Summary: Interactive explainability and debugging framework for vision models
+Requires-Python: >=3.12
+Requires-Dist: torch>=2.5
+Requires-Dist: torchvision>=0.20
+Requires-Dist: captum>=0.7
+Requires-Dist: timm>=1.0
+Requires-Dist: gradio>=5
+Requires-Dist: pillow
+Requires-Dist: numpy
+Requires-Dist: matplotlib

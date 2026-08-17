@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attentionlens"
+version = "0.1.0"
+description = "Interactive explainability and debugging framework for vision models"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.5",
+    "torchvision>=0.20",
+    "captum>=0.7",
+    "timm>=1.0",
+    "gradio>=5",
+    "pillow",
+    "numpy",
+    "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+include = ["attentionlens*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
