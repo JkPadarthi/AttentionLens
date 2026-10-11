@@ -32,13 +32,13 @@ def _get_model(name: str):
     return _MODELS[name]
 
 
-def analyze(image: np.ndarray, model_name: str, class_cond: bool) -> tuple[np.ndarray, str, np.ndarray, list[gr.Gallery], str]:
+def analyze(image: np.ndarray, model_name: str) -> tuple[np.ndarray, str, np.ndarray, list]:
     """Analyze an uploaded image: run the model, produce dual-view maps per layer.
 
-    Returns (annotated image, prediction text, selected map, gallery of all maps, layer list).
+    Returns (annotated image, prediction text, selected class-cond map, gallery).
     """
     if image is None:
-        return image, "Upload an image first.", image, [], ""
+        return image, "Upload an image first.", image, []
     # gradio passes an [H,W,3] uint8 array; convert to the normalized tensor
     img = np.asarray(image)
     if img.ndim == 3 and img.shape[2] == 4:  # RGBA
@@ -54,19 +54,13 @@ def analyze(image: np.ndarray, model_name: str, class_cond: bool) -> tuple[np.nd
     cc = [m for m in insp.layers if m.view == "class_conditioned"]
     if cc:
         sel = _overlay(base, cc[-1].map)
-    # gallery entries: one image per (layer, view)
-    gallery = []
-    labels = []
-    for m in insp.layers:
-        ov = _overlay(base, m.map)
-        gallery.append(ov)
-        labels.append(f"{m.layer_name} · {m.view}")
-    layer_list = labels
-    return base, pred_txt, sel, gallery, layer_list
+    # gallery entries: (image, caption) pairs — gradio renders these as cards
+    gallery = [(m.map, f"{m.layer_name} · {m.view}") for m in insp.layers]
+    return base, pred_txt, sel, gallery
 
 
-def probe(image: np.ndarray, model_name: str, x: int, y: int, size: int) -> tuple[str, list[str]]:
-    """Run a click-to-mask intervention centered at (x, y)."""
+def probe(image: np.ndarray, model_name: str, x: int, y: int, size: int) -> str:
+    """Run a click-to-mask intervention centered at (x, y); returns a text report."""
     img = np.asarray(image)
     h, w = img.shape[0], img.shape[1]
     cx = min(max(x, 0), w - 1)
@@ -84,7 +78,7 @@ def probe(image: np.ndarray, model_name: str, x: int, y: int, size: int) -> tupl
         f"Prediction before: **{r.pred_before}** → after: **{r.pred_after}**",
         f"Target-class logit delta: **{r.logit_delta:+.3f}** (positive = model relied on this region)",
     ]
-    return "\n".join(lines), lines
+    return "\n".join(lines)
 
 
 def explore_map(image: np.ndarray, model_name: str, layer_key: str) -> np.ndarray:
@@ -99,7 +93,11 @@ def _overlay(base: np.ndarray, m: np.ndarray, alpha: float = 0.55) -> np.ndarray
 
     matplotlib.use("Agg")
     from matplotlib import cm
-    cmap = cm.get_cmap("jet")
+    # matplotlib >=3.9 removed cm.get_cmap; use the colormaps registry instead.
+    try:
+        cmap = matplotlib.colormaps["jet"]
+    except Exception:
+        cmap = cm.get_cmap("jet")
     color = (cmap(m)[:, :, :3] * 255).astype(np.uint8)
     img = base.copy()
     img = (img * (1 - alpha) + color * alpha).astype(np.uint8)
@@ -107,14 +105,26 @@ def _overlay(base: np.ndarray, m: np.ndarray, alpha: float = 0.55) -> np.ndarray
 
 
 def load_image_tensor_from_array(arr: np.ndarray, device: torch.device = torch.device("cpu")) -> torch.Tensor:
-    """[H,W,3] uint8 (or float [0,1]..[0,255]) -> normalized [1,3,224,224] float32 tensor."""
+    """[H,W,3] array -> normalized [1,3,224,224] float32 tensor.
+
+    Handles both uint8 [0,255] and float [0,1] inputs (Gradio's numpy Image can be
+    either depending on the upload). Keeps every op float32 so the tensor matches the
+    model's float32 weights.
+    """
     from PIL import Image
     from attentionlens.preprocess import IMAGENET_MEAN, IMAGENET_STD
 
-    img = Image.fromarray(np.asarray(arr, dtype=np.uint8)).convert("RGB").resize((224, 224))
+    arr = np.asarray(arr)
+    if arr.dtype != np.uint8:
+        # float [0,1] (Gradio default) -> scale to [0,255] uint8
+        arr = np.clip(arr, 0.0, 1.0)
+        arr = (arr * 255.0).astype(np.uint8)
+    else:
+        arr = arr.astype(np.uint8)
+    img = Image.fromarray(arr).convert("RGB").resize((224, 224))
     a = np.asarray(img, dtype=np.float32) / 255.0
-    # keep every op in float32 — np.array(list) defaults to float64 and would
-    # promote the tensor to double, which then mismatches the float32 model weights.
+    # force float32 mean/std — np.array(list) would default to float64 and promote
+    # the tensor to double, mismatching the float32 model weights.
     mean = np.asarray(IMAGENET_MEAN, dtype=np.float32)
     std = np.asarray(IMAGENET_STD, dtype=np.float32)
     a = (a - mean) / std
