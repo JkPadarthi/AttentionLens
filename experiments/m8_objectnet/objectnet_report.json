@@ -1,0 +1,733 @@
+{
+  "rows": [
+    {
+      "image": "red_desert_000",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "red_desert_001",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "red_desert_002",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_003",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_004",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_005",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_006",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_007",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "red_desert_008",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_009",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "red_desert_010",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_011",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_012",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "red_desert_013",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_014",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_015",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_016",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "red_desert_017",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_018",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_019",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "red_desert_020",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_021",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_022",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "red_desert_023",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "red_desert_024",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "red_desert_025",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "red_desert_026",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "red_desert_027",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "red_desert_028",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.976,
+      "bg_share": 0.024
+    },
+    {
+      "image": "red_desert_029",
+      "bg": "red_desert",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "purple_void_000",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.971,
+      "bg_share": 0.029
+    },
+    {
+      "image": "purple_void_001",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_002",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_003",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "purple_void_004",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "purple_void_005",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_006",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_007",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_008",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_009",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "purple_void_010",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "purple_void_011",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.975,
+      "bg_share": 0.025
+    },
+    {
+      "image": "purple_void_012",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_013",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_014",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "purple_void_015",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.971,
+      "bg_share": 0.029
+    },
+    {
+      "image": "purple_void_016",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_017",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_018",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.97,
+      "bg_share": 0.03
+    },
+    {
+      "image": "purple_void_019",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.97,
+      "bg_share": 0.03
+    },
+    {
+      "image": "purple_void_020",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "purple_void_021",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_022",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_023",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_024",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.972,
+      "bg_share": 0.028
+    },
+    {
+      "image": "purple_void_025",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_026",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.971,
+      "bg_share": 0.029
+    },
+    {
+      "image": "purple_void_027",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.973,
+      "bg_share": 0.027
+    },
+    {
+      "image": "purple_void_028",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.971,
+      "bg_share": 0.029
+    },
+    {
+      "image": "purple_void_029",
+      "bg": "purple_void",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_000",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_001",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_002",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "noise_003",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_004",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.982,
+      "bg_share": 0.018
+    },
+    {
+      "image": "noise_005",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_006",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_007",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_008",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.976,
+      "bg_share": 0.024
+    },
+    {
+      "image": "noise_009",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_010",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_011",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_012",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_013",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_014",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_015",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_016",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "noise_017",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_018",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_019",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_020",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.977,
+      "bg_share": 0.023
+    },
+    {
+      "image": "noise_021",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.98,
+      "bg_share": 0.02
+    },
+    {
+      "image": "noise_022",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_023",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.976,
+      "bg_share": 0.024
+    },
+    {
+      "image": "noise_024",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_025",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_026",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    },
+    {
+      "image": "noise_027",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.974,
+      "bg_share": 0.026
+    },
+    {
+      "image": "noise_028",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.979,
+      "bg_share": 0.021
+    },
+    {
+      "image": "noise_029",
+      "bg": "noise",
+      "pred": "Samoyed",
+      "obj_share": 0.978,
+      "bg_share": 0.022
+    }
+  ],
+  "verdicts": [
+    {
+      "verdict_type": "class_bias",
+      "level": "info",
+      "message": "Class 'Samoyed' looks object-driven: mean object relevance 0.98 >= background 0.02 over 90 images.",
+      "evidence": [
+        "ImageEntry(image_id='red_desert_000', class_name='Samoyed', correct=True, object_share=0.9753771424293518, background_share=0.024622857570648193, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_001', class_name='Samoyed', correct=True, object_share=0.9749901294708252, background_share=0.025009870529174805, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_002', class_name='Samoyed', correct=True, object_share=0.9794278740882874, background_share=0.020572125911712646, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_003', class_name='Samoyed', correct=True, object_share=0.9788743257522583, background_share=0.0211256742477417, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_004', class_name='Samoyed', correct=True, object_share=0.9779312014579773, background_share=0.022068798542022705, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_005', class_name='Samoyed', correct=True, object_share=0.9771501421928406, background_share=0.022849857807159424, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_006', class_name='Samoyed', correct=True, object_share=0.9780085682868958, background_share=0.021991431713104248, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_007', class_name='Samoyed', correct=True, object_share=0.974814236164093, background_share=0.025185763835906982, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_008', class_name='Samoyed', correct=True, object_share=0.9778923988342285, background_share=0.022107601165771484, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_009', class_name='Samoyed', correct=True, object_share=0.9745761752128601, background_share=0.025423824787139893, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_010', class_name='Samoyed', correct=True, object_share=0.9769923686981201, background_share=0.023007631301879883, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_011', class_name='Samoyed', correct=True, object_share=0.9784320592880249, background_share=0.021567940711975098, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_012', class_name='Samoyed', correct=True, object_share=0.9732530117034912, background_share=0.02674698829650879, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_013', class_name='Samoyed', correct=True, object_share=0.9782406091690063, background_share=0.021759390830993652, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_014', class_name='Samoyed', correct=True, object_share=0.9771443605422974, background_share=0.022855639457702637, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_015', class_name='Samoyed', correct=True, object_share=0.9774681329727173, background_share=0.022531867027282715, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_016', class_name='Samoyed', correct=True, object_share=0.9743454456329346, background_share=0.02565455436706543, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_017', class_name='Samoyed', correct=True, object_share=0.9774063229560852, background_share=0.022593677043914795, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_018', class_name='Samoyed', correct=True, object_share=0.9794254899024963, background_share=0.020574510097503662, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_019', class_name='Samoyed', correct=True, object_share=0.9780097603797913, background_share=0.02199023962020874, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_020', class_name='Samoyed', correct=True, object_share=0.9791462421417236, background_share=0.020853757858276367, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_021', class_name='Samoyed', correct=True, object_share=0.9787156581878662, background_share=0.02128434181213379, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_022', class_name='Samoyed', correct=True, object_share=0.9739888906478882, background_share=0.026011109352111816, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_023', class_name='Samoyed', correct=True, object_share=0.9785560369491577, background_share=0.021443963050842285, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_024', class_name='Samoyed', correct=True, object_share=0.9744783639907837, background_share=0.02552163600921631, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_025', class_name='Samoyed', correct=True, object_share=0.9772955775260925, background_share=0.02270442247390747, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_026', class_name='Samoyed', correct=True, object_share=0.9744992852210999, background_share=0.025500714778900146, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_027', class_name='Samoyed', correct=True, object_share=0.9801780581474304, background_share=0.01982194185256958, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_028', class_name='Samoyed', correct=True, object_share=0.9762272238731384, background_share=0.023772776126861572, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='red_desert_029', class_name='Samoyed', correct=True, object_share=0.9774038791656494, background_share=0.022596120834350586, map_meta={'bg': 'red_desert', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_000', class_name='Samoyed', correct=True, object_share=0.9708645939826965, background_share=0.029135406017303467, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_001', class_name='Samoyed', correct=True, object_share=0.9724842309951782, background_share=0.027515769004821777, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_002', class_name='Samoyed', correct=True, object_share=0.9727128744125366, background_share=0.02728712558746338, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_003', class_name='Samoyed', correct=True, object_share=0.978887140750885, background_share=0.02111285924911499, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_004', class_name='Samoyed', correct=True, object_share=0.9744742512702942, background_share=0.02552574872970581, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_005', class_name='Samoyed', correct=True, object_share=0.9718664288520813, background_share=0.0281335711479187, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_006', class_name='Samoyed', correct=True, object_share=0.9719934463500977, background_share=0.028006553649902344, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_007', class_name='Samoyed', correct=True, object_share=0.9728885293006897, background_share=0.027111470699310303, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_008', class_name='Samoyed', correct=True, object_share=0.9716401100158691, background_share=0.02835988998413086, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_009', class_name='Samoyed', correct=True, object_share=0.9739061594009399, background_share=0.02609384059906006, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_010', class_name='Samoyed', correct=True, object_share=0.974962055683136, background_share=0.025037944316864014, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_011', class_name='Samoyed', correct=True, object_share=0.9745531678199768, background_share=0.025446832180023193, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_012', class_name='Samoyed', correct=True, object_share=0.971850574016571, background_share=0.028149425983428955, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_013', class_name='Samoyed', correct=True, object_share=0.972739040851593, background_share=0.027260959148406982, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_014', class_name='Samoyed', correct=True, object_share=0.974479079246521, background_share=0.025520920753479004, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_015', class_name='Samoyed', correct=True, object_share=0.9713116884231567, background_share=0.02868831157684326, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_016', class_name='Samoyed', correct=True, object_share=0.9731497168540955, background_share=0.02685028314590454, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_017', class_name='Samoyed', correct=True, object_share=0.9716796278953552, background_share=0.028320372104644775, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_018', class_name='Samoyed', correct=True, object_share=0.9701442718505859, background_share=0.029855728149414062, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_019', class_name='Samoyed', correct=True, object_share=0.9703261852264404, background_share=0.02967381477355957, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_020', class_name='Samoyed', correct=True, object_share=0.9744547009468079, background_share=0.02554529905319214, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_021', class_name='Samoyed', correct=True, object_share=0.9716678261756897, background_share=0.028332173824310303, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_022', class_name='Samoyed', correct=True, object_share=0.9728205800056458, background_share=0.027179419994354248, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_023', class_name='Samoyed', correct=True, object_share=0.9733315110206604, background_share=0.0266684889793396, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_024', class_name='Samoyed', correct=True, object_share=0.9720176458358765, background_share=0.027982354164123535, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_025', class_name='Samoyed', correct=True, object_share=0.9734638929367065, background_share=0.026536107063293457, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_026', class_name='Samoyed', correct=True, object_share=0.9712342619895935, background_share=0.028765738010406494, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_027', class_name='Samoyed', correct=True, object_share=0.9731367230415344, background_share=0.026863276958465576, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_028', class_name='Samoyed', correct=True, object_share=0.971073567867279, background_share=0.028926432132720947, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='purple_void_029', class_name='Samoyed', correct=True, object_share=0.9785314798355103, background_share=0.021468520164489746, map_meta={'bg': 'purple_void', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_000', class_name='Samoyed', correct=True, object_share=0.979665219783783, background_share=0.02033478021621704, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_001', class_name='Samoyed', correct=True, object_share=0.9784883856773376, background_share=0.021511614322662354, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_002', class_name='Samoyed', correct=True, object_share=0.976673424243927, background_share=0.023326575756072998, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_003', class_name='Samoyed', correct=True, object_share=0.9782161712646484, background_share=0.021783828735351562, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_004', class_name='Samoyed', correct=True, object_share=0.9816634058952332, background_share=0.018336594104766846, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_005', class_name='Samoyed', correct=True, object_share=0.9787183403968811, background_share=0.021281659603118896, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_006', class_name='Samoyed', correct=True, object_share=0.9793632626533508, background_share=0.02063673734664917, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_007', class_name='Samoyed', correct=True, object_share=0.9779117703437805, background_share=0.022088229656219482, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_008', class_name='Samoyed', correct=True, object_share=0.9763240218162537, background_share=0.023675978183746338, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_009', class_name='Samoyed', correct=True, object_share=0.9803499579429626, background_share=0.019650042057037354, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_010', class_name='Samoyed', correct=True, object_share=0.9787452220916748, background_share=0.021254777908325195, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_011', class_name='Samoyed', correct=True, object_share=0.9788720607757568, background_share=0.021127939224243164, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_012', class_name='Samoyed', correct=True, object_share=0.9796727299690247, background_share=0.020327270030975342, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_013', class_name='Samoyed', correct=True, object_share=0.9803676009178162, background_share=0.019632399082183838, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_014', class_name='Samoyed', correct=True, object_share=0.9781808853149414, background_share=0.021819114685058594, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_015', class_name='Samoyed', correct=True, object_share=0.9795910120010376, background_share=0.020408987998962402, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_016', class_name='Samoyed', correct=True, object_share=0.9770635962486267, background_share=0.02293640375137329, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_017', class_name='Samoyed', correct=True, object_share=0.980140745639801, background_share=0.019859254360198975, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_018', class_name='Samoyed', correct=True, object_share=0.977966845035553, background_share=0.02203315496444702, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_019', class_name='Samoyed', correct=True, object_share=0.9790161848068237, background_share=0.02098381519317627, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_020', class_name='Samoyed', correct=True, object_share=0.9770227074623108, background_share=0.02297729253768921, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_021', class_name='Samoyed', correct=True, object_share=0.9797775745391846, background_share=0.02022242546081543, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_022', class_name='Samoyed', correct=True, object_share=0.9780310988426208, background_share=0.02196890115737915, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_023', class_name='Samoyed', correct=True, object_share=0.9763799905776978, background_share=0.023620009422302246, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_024', class_name='Samoyed', correct=True, object_share=0.9792374968528748, background_share=0.020762503147125244, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_025', class_name='Samoyed', correct=True, object_share=0.9789024591445923, background_share=0.021097540855407715, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_026', class_name='Samoyed', correct=True, object_share=0.9781481027603149, background_share=0.02185189723968506, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_027', class_name='Samoyed', correct=True, object_share=0.9739934206008911, background_share=0.026006579399108887, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_028', class_name='Samoyed', correct=True, object_share=0.9789604544639587, background_share=0.02103954553604126, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})",
+        "ImageEntry(image_id='noise_029', class_name='Samoyed', correct=True, object_share=0.9776459336280823, background_share=0.022354066371917725, map_meta={'bg': 'noise', 'bbox': [34, 34, 156, 156]})"
+      ]
+    }
+  ]
+}

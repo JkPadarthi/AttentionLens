@@ -31,7 +31,13 @@
 - [ ] **M7 on GPU (jengas, RTX 5070)**: docker build `attentionlens-gpu` running;
       plan is scaled-up run (more classes/epochs) + ViT experiment, against real
       CUB-200 if dataset download completes quickly.
-- [ ] **M8 — ObjectNet natural-bias check + final report**
+- [x] **M8 — ObjectNet-style natural-bias check** (`experiments/objectnet_check.py`):
+      ran on GPU; a pretrained ResNet-50 correctly stayed object-focused on all three
+      weird backgrounds (bg_share ≤ 0.03 each), so the screener returned `info`
+      (object-driven), not a bias flag. **Tool verified; the synthetic stand-in did not
+      induce context-reliance** (object composited too prominently, ~70% of frame).
+      A true spur-of-the-moment bias test needs the real 3 GB ObjectNet + its scraping
+      downloader — a separate job. Report: `experiments/m8_objectnet/objectnet_report.json`.
 
 ## Next Up (M2+)
 - [x] **M2 — ViT extractor** (attention rollout + class-conditioned ViT maps) ✅
@@ -39,8 +45,8 @@
 - [x] **M4 — Intervention loop** ✅
 - [x] **M5 — Gradio UI** ✅
 - [x] **M6 — Screening engine** ✅
-- [ ] **M7 — Planted-bias experiment (Waterbirds-style)** — script done, CPU proof done, GPU scaling in flight
-- [ ] **M8 — ObjectNet check + final report**
+- [x] **M7 — Planted-bias experiment (Waterbirds-style)** ✅ (GPU)
+- [ ] **M8 — ObjectNet check on the REAL dataset + final report** (stand-in done; real run pending 3 GB download)
 
 ## Known Findings
 - **Grad-CAM can produce all-zero maps on intermediate layers** (observed at `layer2.3.conv3`):

@@ -24,7 +24,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
 import torch
@@ -115,9 +118,10 @@ def main():
     print(json.dumps({"entries": len(entries), "per_bg_background_share": {
         bg_name: float(np.mean([r["bg_share"] for r in rows if r["bg"] == bg_name]))
         for bg_name in bgs}}, indent=2))
-    print(json.dumps([vars(v) for v in report.verdicts], indent=2))
+    print(json.dumps([vars(v) for v in report.verdicts], indent=2, default=str))
     (out / "objectnet_report.json").write_text(
-        json.dumps({"rows": rows, "verdicts": [vars(v) for v in report.verdicts]}, indent=2))
+        json.dumps({"rows": rows, "verdicts": [vars(v) for v in report.verdicts]},
+                   indent=2, default=str))
     print(f"\nreport -> {out / 'objectnet_report.json'}")
 
 
