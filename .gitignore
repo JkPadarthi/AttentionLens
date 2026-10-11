@@ -11,7 +11,10 @@ __pycache__/
 !ROADMAP.md
 *.log
 *.egg-info/
+node_modules/
 experiments/out/
 experiments/out_m2/
 experiments/sample.jpg
 experiments/m7/
+experiments/m7_dev/
+experiments/m7_gpu_smoke/
