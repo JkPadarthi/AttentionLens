@@ -105,11 +105,12 @@ def screen_class_bias(
     return report
 
 
-def screen_failure_diagnosis(entries: list[ImageEntry], min_images: int = 2) -> list[Verdict]:
+def screen_failure_diagnosis(entries: list[ImageEntry], max_verdicts: int = 50) -> list[Verdict]:
     """Flag misclassified images where relevance still lands on the background.
 
     A *failure diagnosis* is the model being wrong AND showing background reliance
-    — i.e. "it guessed from the context, not the object."
+    — i.e. "it guessed from the context, not the object." Cap on the number of
+    verdicts reported (a large run can have hundreds of context-guesses).
     """
     out: list[Verdict] = []
     for e in entries:
@@ -121,6 +122,6 @@ def screen_failure_diagnosis(entries: list[ImageEntry], min_images: int = 2) -> 
                          f"{e.object_share:.2f}). Guessed from context, not object."),
                 evidence=[{**e.map_meta, "image_id": e.image_id}],
             ))
-            if len(out) >= min_images:
+            if len(out) >= max_verdicts:
                 break
     return out

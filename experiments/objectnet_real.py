@@ -73,6 +73,7 @@ def main():
     ap.add_argument("--per-class", type=int, default=30)
     ap.add_argument("--out", default="experiments/m8_real")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--max-failure-verdicts", type=int, default=50)
     args = ap.parse_args()
     device = torch.device(args.device)
 
@@ -153,7 +154,7 @@ def main():
                      "model_bg_share": round(bg_sens, 3)})
 
     report = screen_class_bias(entries)
-    fl = screen_failure_diagnosis(entries)
+    fl = screen_failure_diagnosis(entries, max_verdicts=args.max_failure_verdicts)
     report.verdicts.extend(fl)
     import json as _json
     print(_json.dumps({"n_images": len(entries), "n_classes": len(class_ids),

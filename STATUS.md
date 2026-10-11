@@ -46,7 +46,30 @@
 - [x] **M5 — Gradio UI** ✅
 - [x] **M6 — Screening engine** ✅
 - [x] **M7 — Planted-bias experiment (Waterbirds-style)** ✅ (GPU)
-- [ ] **M8 — ObjectNet check on the REAL dataset + final report** (stand-in done; real run pending 3 GB download)
+### Real M8 — ObjectNet (actual dataset, complete)
+
+Ran AttentionLens on the **real `timm/objectnet-in1k`** (44 GB, 91 shards, 113
+ImageNet-overlapping classes; downloaded with an HF token, license accepted).
+
+- **Full run: 900 images / 30 ObjectNet classes → accuracy 0.209** (188/900). That
+  is the ~60% collapse from ImageNet-1k (~0.80 top-1) a standard ResNet-50 suffers on
+  ObjectNet's randomized backgrounds/rotations — the exact "models rely on context"
+  effect the benchmark is built to expose. **The M8 claim is validated with real data.**
+- **Failure-diagnosis**: 77 images (~10.8% of the 712 misclassifications) are cleanly
+  diagnosable as context-guesses — misclassified *and* class-conditioned relevance
+  concentrated on the background (e.g. a bandage on a table predicted "toaster",
+  "bobsled", "ashcan"; bg share 0.52–0.65). These are the "guessed from context, not
+  object" verdicts.
+- **Methodology note (honest)**: per-image occlusion bg_share is not a perfect
+  separator — mean bg_share on correct (0.26) ≈ wrong (0.252). The *aggregate* signal
+  (accuracy collapse + 77 evidence-backed context-guesses) is strong; the *per-image*
+  occlusion proxy alone doesn't fully separate context reliance, which is itself a
+  finding worth stating. Class-bias flags live in the M7 planted-bias setting (where
+  we *know* the shortcut), not ObjectNet's unlabeled-natural setting.
+- Full report: `experiments/m8_full/m8_real_report.json`. Smoke (32 img) earlier.
+
+### Next / known follow-ups
+- Full 113-class ObjectNet sweep (this used 30 classes) for publication-grade stats.
 
 ## Known Findings
 - **Grad-CAM can produce all-zero maps on intermediate layers** (observed at `layer2.3.conv3`):
