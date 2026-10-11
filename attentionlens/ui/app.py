@@ -107,13 +107,17 @@ def _overlay(base: np.ndarray, m: np.ndarray, alpha: float = 0.55) -> np.ndarray
 
 
 def load_image_tensor_from_array(arr: np.ndarray, device: torch.device = torch.device("cpu")) -> torch.Tensor:
-    """[H,W,3] uint8 (or float [0,1]..[0,255]) -> normalized [1,3,224,224] tensor."""
+    """[H,W,3] uint8 (or float [0,1]..[0,255]) -> normalized [1,3,224,224] float32 tensor."""
     from PIL import Image
     from attentionlens.preprocess import IMAGENET_MEAN, IMAGENET_STD
 
     img = Image.fromarray(np.asarray(arr, dtype=np.uint8)).convert("RGB").resize((224, 224))
     a = np.asarray(img, dtype=np.float32) / 255.0
-    a = (a - np.array(IMAGENET_MEAN)).astype(np.float32) / np.array(IMAGENET_STD)
+    # keep every op in float32 — np.array(list) defaults to float64 and would
+    # promote the tensor to double, which then mismatches the float32 model weights.
+    mean = np.asarray(IMAGENET_MEAN, dtype=np.float32)
+    std = np.asarray(IMAGENET_STD, dtype=np.float32)
+    a = (a - mean) / std
     t = torch.from_numpy(a).permute(2, 0, 1).unsqueeze(0).to(device)
     return t
 
