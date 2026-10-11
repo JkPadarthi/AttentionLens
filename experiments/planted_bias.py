@@ -154,9 +154,16 @@ def screen(model: torch.nn.Module, dataset: _FolderDataset, arch: str | None,
     from attentionlens.screening import ImageEntry, screen_class_bias
 
     # For the synthetic dataset, "bbox" approx = the central object square.
+    # Cap is per-class so no planted class is ever truncated by an ordering cap.
     entries: list[ImageEntry] = []
     intervent: list[float] = []
-    for i in range(min(len(dataset), 200)):
+    max_per_class = 200
+    seen_counts: dict[int, int] = {}
+    for i in range(len(dataset)):
+        yb = dataset[i][1]
+        seen_counts[yb] = seen_counts.get(yb, 0) + 1
+        if seen_counts[yb] > max_per_class:
+            continue
         xb, yb = dataset[i]
         xb = xb.unsqueeze(0).to(device)
         h, w = xb.shape[-2:]
