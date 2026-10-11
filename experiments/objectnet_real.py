@@ -22,7 +22,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
 import torch
@@ -41,15 +44,17 @@ def _strip_border(img: np.ndarray, border: int = 2) -> np.ndarray:
 
 
 def _load_one_shard_rows(ds, idx):
-    """Yield (image_array, imagenet_label_index) rows from a datasets shard."""
+    """Yield (image_array, imagenet_labels, objectnet_label) rows from a datasets shard."""
     row = ds[idx]
     img = row["image"]
     if hasattr(img, "convert"):
         arr = np.asarray(img.convert("RGB"))
     else:
         arr = np.asarray(img)
-    lbl = int(row["imagenet_label_index"])
-    return _strip_border(arr), lbl
+    # ObjectNet -> ImageNet mapping is a LIST of acceptable ImageNet-1k indices.
+    labels = list(row["imagenet_labels"]) if isinstance(row["imagenet_labels"], (list, tuple)) else [int(row["imagenet_labels"])]
+    obj_label = int(row["label"])
+    return _strip_border(arr), labels, obj_label
 
 
 def _to_tensor(img: np.ndarray, device, size: int = 224) -> torch.Tensor:
@@ -81,57 +86,71 @@ def main():
         try:
             ds = load_from_disk(str(data_dir))
         except Exception:
-            ds = load_dataset("parquet", data_files=str(data_dir / "*.parquet"))["train"]
+            # parquet shards live under <data_dir>/data/*.parquet in the timm mirror
+            pq_dir = data_dir / "data"
+            all_pq = sorted(map(str, data_dir.rglob("*.parquet")))
+            if not all_pq:
+                raise
+            files = sorted(map(str, pq_dir.glob("*.parquet"))) if pq_dir.exists() else all_pq
+            ds = load_dataset("parquet", data_files=files)["train"]
     else:
         raise FileNotFoundError(
             f"ObjectNet data not found at {data_dir}. Run experiments/fetch_objectnet.py first.")
 
-    # pick a deterministic subset: first `n_classes` classes, `per_class` each
+    # pick a deterministic subset of ObjectNet classes (by ObjectNet label),
+    # `per_class` images each
     rng = np.random.default_rng(args.seed)
-    class_ids = {}
+    class_ids: dict[int, int] = {}
     picked = []
     for i in range(len(ds)):
-        lbl = int(ds[i]["imagenet_label_index"])
-        if lbl not in class_ids:
-            class_ids[lbl] = 0
-        if class_ids[lbl] < args.per_class and len(class_ids) <= args.n_classes:
-            class_ids[lbl] += 1
+        obj_label = int(ds[i]["label"])
+        first = obj_label not in class_ids
+        class_ids.setdefault(obj_label, 0)
+        if len(class_ids) <= args.n_classes and class_ids[obj_label] < args.per_class:
+            class_ids[obj_label] += 1
             picked.append(i)
-        if len(picked) >= args.n_classes * args.per_class and len(class_ids) >= args.n_classes:
+        if len(class_ids) >= args.n_classes and all(v >= args.per_class for v in class_ids.values()):
             break
-    print(f"[m8] picked {len(picked)} images across {len(class_ids)} classes", flush=True)
+    print(f"[m8] picked {len(picked)} images across {len(class_ids)} ObjectNet classes", flush=True)
 
     ext = ResNetExtractor(device=device)
-    imagenet_labels = ext.imagenet_labels  # dict[int,str]
+    imagenet_labels = ext.imagenet_labels  # dict[int,str]  (ImageNet-1k)
 
     entries: list[ImageEntry] = []
     rows = []
     for k, idx in enumerate(picked):
         try:
-            arr, lbl = _load_one_shard_rows(ds, idx)
+            arr, labels_ok, obj_label = _load_one_shard_rows(ds, idx)
         except Exception as e:
             continue
         x = _to_tensor(arr, device)
-        insp = ext.inspect(x, image_id=f"obj{k}", true_label=imagenet_labels.get(lbl, f"class_{lbl}"))
-        correct = insp.pred_label == insp.true_label or (
-            insp.true_label.startswith("class_") is False and insp.pred_label == insp.true_label)
+        insp = ext.inspect(x, image_id=f"obj{k}",
+                           true_label=imagenet_labels.get(labels_ok[0], f"class_{labels_ok[0]}"))
+        # correct = the predicted ImageNet index is one of the acceptable ObjectNet
+        # mappings (standard ObjectNet evaluation), not equal to a single label.
+        with torch.no_grad():
+            pred_idx2 = int(ext.model(x).argmax(dim=1).item())
+        correct = pred_idx2 in labels_ok
         # causal background/object sensitivity via occlusion on a 3x3 grid
         h, w = x.shape[-2:]
         try:
             ice = run_intervention(ext.model, x, split_regular_grid(h, w, 3),
-                                   target_class=lbl, strategy="zero", device=device,
+                                   target_class=pred_idx2, strategy="zero", device=device,
                                    class_names=imagenet_labels)
         except Exception:
             ice = []
         bg_sens = float(np.mean([r.logit_delta for r in ice])) if ice else 0.0
+        cls_name = imagenet_labels.get(pred_idx2, f"class_{pred_idx2}")
         entries.append(ImageEntry(
-            image_id=f"obj{k}", class_name=imagenet_labels.get(lbl, f"class_{lbl}"),
+            image_id=f"obj{k}", class_name=cls_name,
             correct=correct, object_share=max(0.0, 1.0 - float(bg_sens)),
             background_share=min(1.0, float(bg_sens)),
-            map_meta={"true_label": insp.true_label, "pred": insp.pred_label},
+            map_meta={"true_labels": labels_ok, "obj_label": obj_label,
+                      "pred": insp.pred_label},
         ))
-        rows.append({"img": f"obj{k}", "true": insp.true_label, "pred": insp.pred_label,
-                     "correct": bool(correct), "model_bg_share": round(bg_sens, 3)})
+        rows.append({"img": f"obj{k}", "true_labels": labels_ok, "pred": insp.pred_label,
+                     "pred_idx": pred_idx2, "correct": bool(correct),
+                     "model_bg_share": round(bg_sens, 3)})
 
     report = screen_class_bias(entries)
     fl = screen_failure_diagnosis(entries)
