@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.md
+!README.md
+!PROJECT.md
+!DECISIONS.md
+!STATUS.md
+!ROADMAP.md
+*.log
+*.egg-info/
+experiments/out/
+experiments/out_m2/
+experiments/sample.jpg
+experiments/m7/
