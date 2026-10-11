@@ -68,3 +68,15 @@ class-agnostic and broad by nature; only class-conditioned maps are sharp.
 `ResNet50_Weights.IMAGENET1K_V2.meta` is a **dict** on torchvision 0.28 —
 `meta.get("categories")`, never `getattr(meta, "categories")`. Caught in T7 when the
 demo printed `class_258` instead of `Samoyed`.
+
+## 12. ViT class-conditioned map = in-graph gradient-weighted attention (AxG), not gradient-of-rollout
+The first M2 attempt weighted the *rolled-up* patch map by ∂logit/∂rollout. That is an
+autograd dead-end: the rollout is a **branch** built from the attention tensors, NOT an
+ancestor of the logit, so `autograd.grad(logits, rollout)` yields `None`/a hard error.
+The faithful, working analogue of Grad-CAM is per-block **gradient-weighted attention**:
+for each block, ReLU(raw_attention ⊙ ∇_A logit_target), take the CLS source row → patches.
+This is a true in-graph descendant→ancestor gradient, computed per block (one
+class-conditioned `LayerMap` per block, matching the CNN extractor's per-layer story).
+Chosen over LRP/token-attribution because it stays inside the already-verified
+attention-hook plumbing and reuses the native rollout capture. DECISIONS #2/#6 updated
+in practice: the "class-conditioned ViT method" is now frozen as AxG.

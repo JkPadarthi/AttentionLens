@@ -1,45 +1,52 @@
 # Status
 
-> Updated as work progresses. Last update: **M1 complete — schema + ResNet-50 dual-view extractor verified end-to-end on a real image (Samoyed, 8 maps).**
+> Updated as work progresses. Last update: **M2–M6 built+tested; M7 planted-bias experiment proven end-to-end (screener caught the planted shortcut); GPU runs queued on jengas (RTX 5070).** Date: 2026-10-11.
 
 ## Completed
 - [x] Design discussion: problem → novelty → abstraction → screening → validation
 - [x] Design doc (`docs/design.md`): dual-view schema, 5 metrics, screening engine,
       both validation experiments, 8 milestones
-- [x] Project scaffold on Arjun: `D:\GIT\AttentionLens\` created
-- [x] Magic 5 files: README / PROJECT / DECISIONS / STATUS / ROADMAP
-- [x] Python 3.12.10 venv (`.venv`) on Arjun
-- [x] Dependencies: torch 2.13.0+cpu, torchvision 0.28.0+cpu, captum 0.9.0, timm,
-      gradio — `ALL_IMPORTS_OK`
-- [x] opencode-arjun MCP fixed (scheduled-task cwd → `D:\GIT`), all gates green
-- [x] **M1 Task 1 — package skeleton** (`pyproject.toml`, package dirs, `.gitignore`; `PKG_OK`)
-- [x] **M1 Task 2 — unified schema** (`schema.py`: `LayerMap`, `InterventionResult`, `ModelInspection`) — 2 tests
-- [x] **M1 Task 3 — preprocessing** (`preprocess.py`: load/normalize, tensor→image) — 2 tests (skip w/o torch)
-- [x] **M1 Task 4 — native-view extractor** (`extractors/cnn.py`: mean-channel activation maps) — test
-- [x] **M1 Task 5 — class-conditioned extractor** (`extractors/cnn.py`: Captum LayerGrad-CAM) — test; fixed `.detach()` bug the test caught
-- [x] **M1 Task 6 — ResNet orchestrator** (`extractors/resnet.py`: `ResNetExtractor.inspect`) — test; fixed ImageNet label wiring (meta dict)
-- [x] **M1 Task 7 — real-image demo** (`experiments/m1_demo.py`): Samoyed predicted correctly,
-      8 maps (4 blocks × native/class-cond) generated and verified (vision check on layer4:
-      heatmap on dog body/head; per-layer entropy stats sane)
+- [x] **M1 — schema + ResNet-50 dual-view extractor verified end-to-end**
+- [x] M1 Task 8 — **git initialized + first commit** (this repo now has history, 2026-10-11)
+- [x] **M2 — ViT extractor**: attention rollout (native) + gradient-weighted attention
+      (class-conditioned, AxG); `VitExtractor` mirrors `ResNetExtractor`. Real-image
+      gate passed (Samoyed, 25 maps; viual check: maps focused on the dog).
+- [x] **M3 — metrics**: focus entropy, object relevance share, part alignment,
+      background sensitivity, `all_metrics`
+- [x] **M4 — intervention**: occlusion loop (zero/var/blur), regular grid split
+- [x] **M6 — screening engine**: class-bias flags + failure diagnosis with evidence
+- [x] **M5 — Gradio UI** (`attentionlens/ui/app.py`): dual-view browser + click-to-mask
+- [x] **M7 — planted-bias experiment runner** (`experiments/planted_bias.py`):
+      Waterbirds-style; **proven on CPU**: model 100% acc on biased set, screener
+      flagged BOTH classes background-driven (class_0: 0.81 vs 0.19; class_1: 0.97
+      vs 0.03). Report → `experiments/m7_dev/m7_report.json`.
+- [x] All **21 unit + integration tests pass** in `.venv`
 
 ## In Progress
-- [ ] **M1 Task 8 — housekeeping** (STATUS/DECISIONS update, git init + first commit)
+- [ ] **M7 on GPU (jengas, RTX 5070)**: docker build `attentionlens-gpu` running;
+      plan is scaled-up run (more classes/epochs) + ViT experiment, against real
+      CUB-200 if dataset download completes quickly.
+- [ ] **M8 — ObjectNet natural-bias check + final report**
 
 ## Next Up (M2+)
-- [ ] **M2 — ViT extractor** (attention rollout + class-conditioned ViT maps)
-- [ ] **M3 — Metrics** (object relevance share, part alignment, entropy, sensitivities)
-- [ ] **M4 — Intervention loop** (mask → re-run → measure)
-- [ ] **M5 — Gradio UI** (dual-view layer browser + click-to-mask)
-- [ ] **M6 — Screening engine** (aggregation + verdicts + evidence links)
-- [ ] **M7 — Planted-bias experiment** (Waterbirds-style)
+- [x] **M2 — ViT extractor** (attention rollout + class-conditioned ViT maps) ✅
+- [x] **M3 — Metrics** ✅
+- [x] **M4 — Intervention loop** ✅
+- [x] **M5 — Gradio UI** ✅
+- [x] **M6 — Screening engine** ✅
+- [ ] **M7 — Planted-bias experiment (Waterbirds-style)** — script done, CPU proof done, GPU scaling in flight
 - [ ] **M8 — ObjectNet check + final report**
 
-## Known Findings (from M1 verification)
+## Known Findings
 - **Grad-CAM can produce all-zero maps on intermediate layers** (observed at `layer2.3.conv3`):
-  when a layer's gradient-weighted activations are entirely non-positive, ReLU zeroes the
-  map. This is documented Grad-CAM behavior, not a bug — the pipeline faithfully reports
-  "no positive class-specific evidence at this layer." Recorded in DECISIONS.md.
-- **ImageNet label metadata**: `ResNet50_Weights.meta` is a *dict* on this torchvision —
-  use `meta.get("categories")`, not `getattr`. Caught in T7 verification.
-- **Captum attribution tensors require `.detach()`** before `.numpy()` — caught by the
-  T5 test.
+  documented Grad-CAM behavior, not a bug (Recorded in DECISIONS.md #9).
+- **ImageNet label metadata**: `ResNet50_Weights.meta` is a *dict* — use `meta.get("categories")`, not `getattr`.
+- **M2 ViT class-conditioning must be in-graph AxG, not gradient-of-rollout**:
+  the rollout map is a *branch* off the attention tensors, not an ancestor of the
+  logit — `autograd.grad(logits, rollout)` returns `None`/errors. Gradient-weighted
+  attention (ReLU(A·∇L)) computed directly against each block's raw attention is the
+  faithful, working analogue of Grad-CAM (DECISIONS #12).
+- **timm ViT passes `attn_mask`/`is_causal`/drop_path kwargs into `attn(...)`** —
+  the hook wrapper must accept `**kw` or it crashes on `vision_transformer.py`.
+- **M7 screener verdicts are evidence-backed, not vibes**: every flag carries the
+  per-image ImageEntry evidence links.
