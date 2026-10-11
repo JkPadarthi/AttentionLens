@@ -32,18 +32,41 @@ A tool in the SHAP/Captum/Lucid tradition, not a new XAI method:
    evidence-backed reports (no other tool ships this).
 3. **Causal debugging loop** — intervene → measure → verdict.
 
-## Quickstart
+## Status (2026-10-11)
+
+- **M1–M6 shipped**: schema + ResNet-50 extractor + ViT extractor (attention rollout +
+  gradient-weighted AxG), metrics, intervention loop, Gradio UI, screening engine.
+- **21/21 tests pass** · `experiments/m2_demo.py` proves dual-view on a real image
+  (ResNet 8 maps, ViT 25 maps).
+- **M7 planted-bias experiment works end-to-end**: model trained to 100% acc on a
+  biased set; the screener flagged the exact planted correlation (background reliance).
+- **M8 ObjectNet-style check** runner included.
+- GPU runs (jengas / RTX 5070) via `docker/` image.
+
+## Quickstart (CPU)
 
 ```bash
-cd D:\GIT\AttentionLens
-.venv\Scripts\activate
+cd AttentionLens
+python3 -m venv .venv && . .venv/bin/activate     # or D:\GIT\AttentionLens + .venv\Scripts\activate
 pip install -e .
-# coming in M1+: python -m attentionlens inspect --model resnet50 --image bird.jpg
+pip install torch torchvision captum timm gradio pytest
+python -m pytest tests/ -v                          # all green
+python experiments/m2_demo.py experiments/sample.jpg experiments/out_m2
+```
+
+## GPU (Blackwell / RTX 5070)
+
+```bash
+# on the GPU box, from docker/
+docker build --no-cache -t attentionlens-gpu .      # pulls torch 2.11.0+cu128
+docker run --rm --gpus all -v "$PWD":/app -w /app \
+  attentionlens-gpu python experiments/gpu_m7_run.py --device cuda
 ```
 
 ## Tech Stack
 
-Python 3.12 · PyTorch · torchvision · Captum · timm · Gradio · CUB-200 / ObjectNet
+Python 3.11/3.12 · PyTorch (2.14 CPU / 2.11+cu128 GPU) · torchvision · Captum · timm ·
+Gradio · CUB-200 / ObjectNet
 
 ## Docs
 

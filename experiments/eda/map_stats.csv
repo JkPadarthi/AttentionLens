@@ -1,0 +1,9 @@
+layer,view,method,model_class,map_mean,map_std,entropy_bits,top10_mass_frac,peak_y,peak_x
+layer1.2.conv3,native,mean_channel,Samoyed,0.7265200614929199,0.0999729186296463,4.486,0.117,117,217
+layer2.3.conv3,native,mean_channel,Samoyed,0.6465684771537781,0.13976001739501953,5.139,0.132,147,12
+layer3.5.conv3,native,mean_channel,Samoyed,0.48081642389297485,0.19626359641551971,5.655,0.175,183,0
+layer4.2.conv3,native,mean_channel,Samoyed,0.5830323100090027,0.18063050508499146,5.357,0.143,143,48
+layer1.2.conv3,class_conditioned,gradcam,Samoyed,0.0033592137042433023,0.030386021360754967,0.28,1.0,0,165
+layer2.3.conv3,class_conditioned,gradcam,Samoyed,0.0,0.0,-0.0,nan,0,0
+layer3.5.conv3,class_conditioned,gradcam,Samoyed,0.019774744287133217,0.09203138947486877,0.953,0.987,0,0
+layer4.2.conv3,class_conditioned,gradcam,Samoyed,0.15329602360725403,0.24205482006072998,3.387,0.465,79,80

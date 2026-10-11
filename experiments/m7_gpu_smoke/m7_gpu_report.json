@@ -1,0 +1,73 @@
+{
+  "n_images": 100,
+  "accuracy": 1.0,
+  "verdicts": [
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_0' looks background-driven: mean background relevance 0.73 > object 0.27 over 25 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='0', class_name='class_0', correct=True, object_share=0.2551766633987427, background_share=0.7448233366012573, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='1', class_name='class_0', correct=True, object_share=0.26685652136802673, background_share=0.7331434786319733, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='2', class_name='class_0', correct=True, object_share=0.2465851753950119, background_share=0.7534148246049881, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    },
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_1' looks background-driven: mean background relevance 0.86 > object 0.14 over 25 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='25', class_name='class_1', correct=True, object_share=0.13332635164260864, background_share=0.8666736483573914, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='26', class_name='class_1', correct=True, object_share=0.12400180101394653, background_share=0.8759981989860535, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='27', class_name='class_1', correct=True, object_share=0.14084163308143616, background_share=0.8591583669185638, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    },
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_2' looks background-driven: mean background relevance 0.96 > object 0.04 over 25 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='50', class_name='class_2', correct=True, object_share=0.05528232082724571, background_share=0.9447176791727543, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='51', class_name='class_2', correct=True, object_share=0.07009461522102356, background_share=0.9299053847789764, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='52', class_name='class_2', correct=True, object_share=0.04790692776441574, background_share=0.9520930722355843, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    },
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_3' looks background-driven: mean background relevance 0.90 > object 0.10 over 25 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='75', class_name='class_3', correct=True, object_share=0.2484208345413208, background_share=0.7515791654586792, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='76', class_name='class_3', correct=True, object_share=0.18761134147644043, background_share=0.8123886585235596, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='77', class_name='class_3', correct=True, object_share=0.18680211901664734, background_share=0.8131978809833527, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    }
+  ],
+  "class_stats": {
+    "class_0": {
+      "n": 25,
+      "mean_object_share": 0.2690401959419251,
+      "mean_background_share": 0.7309598040580749,
+      "accuracy": 1.0
+    },
+    "class_1": {
+      "n": 25,
+      "mean_object_share": 0.14111258149147032,
+      "mean_background_share": 0.8588874185085297,
+      "accuracy": 1.0
+    },
+    "class_2": {
+      "n": 25,
+      "mean_object_share": 0.043057578057050704,
+      "mean_background_share": 0.9569424219429493,
+      "accuracy": 1.0
+    },
+    "class_3": {
+      "n": 25,
+      "mean_object_share": 0.10130726143717766,
+      "mean_background_share": 0.8986927385628224,
+      "accuracy": 1.0
+    }
+  },
+  "mean_intervention_effort": 1.8672438341379165
+}

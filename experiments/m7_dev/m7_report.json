@@ -1,0 +1,41 @@
+{
+  "n_images": 80,
+  "accuracy": 1.0,
+  "verdicts": [
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_0' looks background-driven: mean background relevance 0.81 > object 0.19 over 40 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='0', class_name='class_0', correct=True, object_share=0.16534635424613953, background_share=0.8346536457538605, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='1', class_name='class_0', correct=True, object_share=0.17090153694152832, background_share=0.8290984630584717, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='2', class_name='class_0', correct=True, object_share=0.17001599073410034, background_share=0.8299840092658997, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    },
+    {
+      "verdict_type": "class_bias",
+      "level": "flag",
+      "message": "Class 'class_1' looks background-driven: mean background relevance 0.97 > object 0.03 over 40 images. Suspected spurious correlation.",
+      "evidence": [
+        "ImageEntry(image_id='40', class_name='class_1', correct=True, object_share=0.03482378274202347, background_share=0.9651762172579765, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='41', class_name='class_1', correct=True, object_share=0.03488979861140251, background_share=0.9651102013885975, map_meta={'bbox': [56, 56, 112, 112]})",
+        "ImageEntry(image_id='42', class_name='class_1', correct=True, object_share=0.034735873341560364, background_share=0.9652641266584396, map_meta={'bbox': [56, 56, 112, 112]})"
+      ]
+    }
+  ],
+  "class_stats": {
+    "class_0": {
+      "n": 40,
+      "mean_object_share": 0.18756947554647924,
+      "mean_background_share": 0.8124305244535208,
+      "accuracy": 1.0
+    },
+    "class_1": {
+      "n": 40,
+      "mean_object_share": 0.034853470884263514,
+      "mean_background_share": 0.9651465291157365,
+      "accuracy": 1.0
+    }
+  },
+  "mean_intervention_effort": 2.8747287064790727
+}

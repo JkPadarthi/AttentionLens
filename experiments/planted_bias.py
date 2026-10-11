@@ -87,8 +87,13 @@ def _make_object_crops(num_classes: int, n_per: int, size: int = 224, seed: int 
     CUB-200 bird crops). A real run replaces this with actual CUB-200 crops."""
     rng = np.random.default_rng(seed)
     crops: list[np.ndarray] = []
-    colors = [(180, 60, 60), (60, 90, 190)]  # distinguishable per class
+    # distinct marker color per class (extend past the 2-class default)
+    base_colors = {
+        0: (180, 60, 60), 1: (60, 90, 190), 2: (40, 150, 80), 3: (200, 140, 30),
+        4: (120, 60, 150), 5: (30, 160, 160),
+    }
     for c in range(num_classes):
+        color = base_colors.get(c, (c * 60 % 200 + 30, c * 90 % 150 + 40, 60))
         for _ in range(n_per):
             im = np.zeros((size, size, 3), dtype=np.uint8)
             im[:, :] = (240, 240, 235)  # light background so the blob is the "object"
@@ -96,7 +101,7 @@ def _make_object_crops(num_classes: int, n_per: int, size: int = 224, seed: int 
             r = rng.integers(size // 8, size // 4)
             y, x = np.ogrid[:size, :size]
             mask = (x - cx) ** 2 + (y - cy) ** 2 <= r ** 2
-            im[mask] = colors[c]
+            im[mask] = color
             crops.append(im)
     return crops
 
@@ -162,10 +167,11 @@ def screen(model: torch.nn.Module, dataset: _FolderDataset, arch: str | None,
         cx0, cy0 = int(w * 0.25), int(h * 0.25)
         bbox = (cx0, cy0, int(w * 0.5), int(h * 0.5))
         # class-conditioned map via the extractor (device-agnostic)
+        # class map built once from the dataset's actual classes
         from attentionlens.extractors.cnn import gradcam_maps
         maps = gradcam_maps(model, ["features.0"], xb, target_class=int(yb),
                             target_size=(h, w), device=device,
-                            class_names={i: f"class_{i}"})
+                            class_names={c: f"class_{c}" for c in range(len(dataset.classes))})
         obj = maps[0].map[bbox[1]:bbox[1] + bbox[3], bbox[0]:bbox[0] + bbox[2]].sum()
         total = maps[0].map.sum() + 1e-9
         obj_share = float(obj / total)
