@@ -17,9 +17,14 @@
 - [x] **M6 — screening engine**: class-bias flags + failure diagnosis with evidence
 - [x] **M5 — Gradio UI** (`attentionlens/ui/app.py`): dual-view browser + click-to-mask
 - [x] **M7 — planted-bias experiment runner** (`experiments/planted_bias.py`):
-      Waterbirds-style; **proven on CPU**: model 100% acc on biased set, screener
-      flagged BOTH classes background-driven (class_0: 0.81 vs 0.19; class_1: 0.97
-      vs 0.03). Report → `experiments/m7_dev/m7_report.json`.
+      Waterbirds-style; **proven end-to-end**. CPU: 2-class & 4-class smoke tests.
+      **GPU (jengas RTX 5070, torch 2.11.0+cu128): 4-class / 80-per run, 320 images,
+      12 epochs, model 100% acc on the biased set.** The screener flagged 3 of 4
+      classes as background-driven (class_0 bg 0.72, class_1 bg 0.92, class_2 bg 0.96 —
+      "Suspected spurious correlation", evidence-linked); **class_3 was NOT flagged**
+      (object share 0.71 vs bg 0.29) because for that color layout the model leaned on
+      the object, not the background. This is the tool being *discriminative*, not
+      over-flagging. Full report: `experiments/m7_gpu/m7_gpu_report.json`.
 - [x] All **21 unit + integration tests pass** in `.venv`
 
 ## In Progress
