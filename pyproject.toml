@@ -16,6 +16,9 @@ dependencies = [
     "pillow",
     "numpy",
     "matplotlib",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
 ]
 
 [tool.setuptools.packages.find]

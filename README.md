@@ -54,6 +54,32 @@ python -m pytest tests/ -v                          # all green
 python experiments/m2_demo.py experiments/sample.jpg experiments/out_m2
 ```
 
+## New React Frontend (Recommended)
+
+A modern React + TypeScript frontend is now available with a FastAPI backend. See [FRONTEND.md](FRONTEND.md) for setup instructions.
+
+**Quick start:**
+
+```bash
+# Terminal 1 - Backend
+pip install -e .
+uvicorn api.main:app --reload --port 8000
+
+# Terminal 2 - Frontend
+cd frontend
+npm install
+npm run dev
+```
+
+Then open `http://localhost:5173` in your browser.
+
+**Features:**
+- Modern UI with Tailwind CSS and shadcn/ui components
+- Interactive attention map browser with layer-by-layer navigation
+- Click-to-mask intervention canvas
+- Real-time prediction updates
+- Dark mode support
+
 ## GPU (Blackwell / RTX 5070)
 
 ```bash
@@ -66,7 +92,7 @@ docker run --rm --gpus all -v "$PWD":/app -w /app \
 ## Tech Stack
 
 Python 3.11/3.12 · PyTorch (2.14 CPU / 2.11+cu128 GPU) · torchvision · Captum · timm ·
-Gradio · CUB-200 / ObjectNet
+Gradio · CUB-200 / ObjectNet · **React + TypeScript + Tailwind CSS** (frontend) · **FastAPI** (backend)
 
 ## Docs
 
