@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttentionLens - Project Report Part 1</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.15;
+            color: #000;
+            text-align: justify;
+            margin: 0;
+            padding: 40px;
+        }
+        
+        .title-page {
+            text-align: center;
+            page-break-after: always;
+            padding-top: 100px;
+        }
+        
+        .title-page h1 {
+            font-size: 16pt;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+        
+        .title-page .author {
+            font-size: 12pt;
+            margin: 20px 0;
+        }
+        
+        .title-page .institution {
+            font-size: 11pt;
+            margin: 15px 0;
+        }
+        
+        .title-page .date {
+            font-size: 11pt;
+            margin-top: 40px;
+        }
+        
+        h1 {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-indent: 0;
+        }
+        
+        .abstract {
+            font-size: 10pt;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #ccc;
+        }
+        
+        .keywords {
+            font-size: 10pt;
+            font-style: italic;
+            margin: 15px 0;
+        }
+        
+        .keywords strong {
+            font-style: normal;
+        }
+        
+        .placeholder {
+            background-color: #fff3cd;
+            border: 2px dashed #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-style: italic;
+            color: #856404;
+        }
+        
+        .page-break {
+            page-break-after: always;
+        }
+        
+        ul, ol {
+            margin: 12px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .section-intro {
+            font-size: 11pt;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- TITLE PAGE -->
+<div class="title-page">
+    <h1>AttentionLens: An Interactive Explainability and Debugging Framework for Vision Models</h1>
+    
+    <div class="author">
+        <strong>Jaswanth Krishna Padarthi</strong>
+    </div>
+    
+    <div class="institution">
+        Vellore Institute of Technology (VIT)<br>
+        Vellore, Tamil Nadu, India
+    </div>
+    
+    <div class="institution">
+        School of Computer Science and Engineering<br>
+        Department of Artificial Intelligence and Machine Learning
+    </div>
+    
+    <div class="date">
+        <strong>Explainable Artificial Intelligence (XAI) Mini Project Report</strong><br>
+        October 2026
+    </div>
+</div>
+
+<!-- ABSTRACT -->
+<h1>Abstract</h1>
+
+<div class="abstract">
+    <p>Deep learning models, particularly Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs), have achieved remarkable performance in computer vision tasks. However, their decision-making processes remain opaque, raising concerns about trust, fairness, and reliability. This project presents <strong>AttentionLens</strong>, an interactive explainability and debugging framework that makes attention mechanisms in vision models transparent and actionable. Unlike existing tools that provide isolated heatmaps, AttentionLens introduces a unified dual-view abstraction that captures both native attention patterns and class-conditioned relevance evidence for both CNN and ViT architectures through a common schema. The framework integrates five quantitative attention quality metrics—focus entropy, object relevance share, part alignment, background sensitivity, and object sensitivity—enabling rigorous evaluation of model behavior. An automated screening engine transforms these metrics into evidence-backed verdicts, detecting spurious correlations and diagnosing misclassifications with traceable proof. Causal intervention capabilities allow users to mask regions and observe prediction changes, establishing cause-effect relationships. Validated through planted-bias experiments (Waterbirds-style) and ObjectNet natural-bias checks, AttentionLens successfully identifies synthetic shortcuts and real-world context reliance. The framework achieves 100% accuracy on biased test sets while correctly flagging 3 of 4 classes as background-driven, demonstrating discriminative bias detection. A Gradio-based interactive interface enables researchers to explore attention patterns layer-by-layer and perform click-to-mask probing. The unified abstraction, automated screening, and causal debugging loop position AttentionLens as a comprehensive tool for vision model explainability, bridging the gap between attribution methods and actionable insights.</p>
+</div>
+
+<div class="keywords">
+    <strong>Keywords:</strong> Explainable AI, Vision Transformers, Attention Mechanisms, Spurious Correlation Detection, Model Debugging, Computer Vision
+</div>
+
+<div class="page-break"></div>
+
+<!-- 1. INTRODUCTION -->
+<h1>1. Introduction</h1>
+
+<h2>1.1 Background and Motivation</h2>
+
+<p class="section-intro">
+The rapid advancement of deep learning has revolutionized computer vision, enabling machines to achieve superhuman performance in tasks ranging from image classification to object detection. Convolutional Neural Networks (CNNs), pioneered by architectures such as ResNet and DenseNet, have dominated the field for over a decade by learning hierarchical feature representations through stacked convolutional layers. More recently, Vision Transformers (ViTs) have emerged as a powerful alternative, leveraging self-attention mechanisms to capture long-range dependencies and achieve state-of-the-art results across diverse vision benchmarks.
+</p>
+
+<p>
+Despite their impressive accuracy, these models operate as black boxes, making decisions based on complex, high-dimensional representations that are incomprehensible to humans. This opacity raises critical concerns in high-stakes applications such as medical diagnosis, autonomous driving, and security systems, where understanding <em>why</em> a model made a particular prediction is as important as the prediction itself. A model that classifies a skin lesion as malignant based on a ruler marking (rather than the lesion itself) may achieve high accuracy during testing but fail catastrophically in deployment when the ruler is absent.
+</p>
+
+<p>
+The field of Explainable Artificial Intelligence (XAI) has emerged to address this challenge, developing techniques that provide insights into model behavior. Methods such as Grad-CAM, SHAP, LIME, and attention rollout generate visual explanations—heatmaps highlighting regions important for predictions. However, these tools typically produce isolated visualizations without providing quantitative metrics, automated diagnostics, or the ability to compare explanations across different architectures. Researchers are left to interpret heatmaps qualitatively, without rigorous tools to detect subtle biases or validate model reasoning.
+</p>
+
+<h2>1.2 Limitations of Conventional Approaches</h2>
+
+<p>
+Current XAI methods for vision models suffer from several fundamental limitations:
+</p>
+
+<ul>
+    <li><strong>Architecture-specific implementations:</strong> Most tools are designed for either CNNs or ViTs, not both. Grad-CAM requires convolutional layers with spatial structure, while attention rollout applies only to transformer architectures. This fragmentation prevents fair comparison between model types and forces practitioners to learn multiple toolsets.</li>
+    
+    <li><strong>Qualitative-only explanations:</strong> Heatmaps provide visual intuition but lack quantitative rigor. A researcher cannot definitively state whether a model focuses on the object or the background without manual inspection, and cannot measure the degree of focus or compare it across images systematically.</li>
+    
+    <li><strong>No automated bias detection:</strong> Existing tools show <em>where</em> a model looks but cannot automatically detect <em>why</em> it looks there. Spurious correlations—such as a wolf classifier keying on snow rather than wolf features—require manual discovery through careful inspection of hundreds of heatmaps.</li>
+    
+    <li><strong>Lack of causal reasoning:</strong> Correlation-based explanations (heatmaps showing high activation in a region) do not establish causation. Without intervention capabilities, it is impossible to determine whether masking a region actually changes the prediction or whether the heatmap merely reflects post-hoc rationalization.</li>
+    
+    <li><strong>No integrated debugging workflow:</strong> Researchers must manually combine attribution methods, compute metrics, visualize results, and draw conclusions. This fragmented workflow is error-prone and does not scale to large datasets or production debugging scenarios.</li>
+</ul>
+
+<h2>1.3 Problem Statement</h2>
+
+<p>
+The core problem addressed by this project is the lack of a unified, quantitative, and actionable framework for understanding and debugging vision models. Specifically, we ask:
+</p>
+
+<ol>
+    <li>How can we create a common abstraction that allows fair comparison of attention patterns across fundamentally different architectures (CNNs vs. ViTs)?</li>
+    <li>How can we transform qualitative heatmaps into quantitative metrics that enable systematic evaluation of model behavior?</li>
+    <li>How can we automatically detect spurious correlations and diagnose misclassifications without manual inspection?</li>
+    <li>How can we establish causal relationships between attention patterns and model predictions through intervention?</li>
+</ol>
+
+<h2>1.4 Research Objectives</h2>
+
+<p>
+This project aims to develop AttentionLens, a comprehensive framework that addresses the above challenges through the following objectives:
+</p>
+
+<ol>
+    <li><strong>Unified Dual-View Abstraction:</strong> Design a schema that captures both native attention patterns (where the mechanism focuses) and class-conditioned relevance (where the evidence for a prediction lies) for both CNN and ViT architectures, enabling apples-to-apples comparison.</li>
+    
+    <li><strong>Quantitative Attention Metrics:</strong> Implement five metrics—focus entropy, object relevance share, part alignment, background sensitivity, and object sensitivity—that quantify attention quality using ground-truth annotations (bounding boxes, part keypoints).</li>
+    
+    <li><strong>Automated Screening Engine:</strong> Build a verdict generation system that aggregates per-image metrics into class-level statistics and produces evidence-backed flags for spurious correlations, layer-role profiles, and failure diagnoses.</li>
+    
+    <li><strong>Causal Intervention Loop:</strong> Develop occlusion-based intervention tools that mask regions and measure prediction changes, establishing cause-effect relationships between attention patterns and model behavior.</li>
+    
+    <li><strong>Interactive Debugging Interface:</strong> Create a user-friendly Gradio application that enables researchers to explore attention patterns layer-by-layer, perform click-to-mask probing, and visualize dual-view explanations in real-time.</li>
+    
+    <li><strong>Validation Through Experiments:</strong> Validate the framework through planted-bias experiments (Waterbirds-style) where synthetic correlations are introduced and must be detected, and through ObjectNet natural-bias checks on real-world data.</li>
+</ol>
+
+<h2>1.5 Expected Contributions</h2>
+
+<p>
+This project makes the following contributions to the field of explainable AI for vision models:
+</p>
+
+<ol>
+    <li><strong>Unified Framework:</strong> A novel dual-view abstraction that treats CNN and ViT architectures symmetrically, producing LayerMap objects with identical structure regardless of the underlying mechanism. This enables fair comparison and metric computation across architectures.</li>
+    
+    <li><strong>Automated Diagnostics:</strong> A screening engine that goes beyond visualization to provide automated, evidence-backed verdicts. Each flag includes traceable proof (specific images and maps), enabling researchers to investigate issues systematically rather than relying on qualitative inspection.</li>
+    
+    <li><strong>Causal Debugging:</strong> Integration of intervention capabilities into the explanation workflow, allowing users to test hypotheses about model behavior by masking regions and observing prediction changes. This moves beyond correlation to establish causation.</li>
+    
+    <li><strong>Comprehensive Validation:</strong> Rigorous validation through both synthetic (planted-bias) and natural (ObjectNet) experiments, demonstrating that the framework can detect known shortcuts and real-world context reliance with high precision.</li>
+    
+    <li><strong>Open-Source Tool:</strong> A fully implemented, tested, and documented framework available for the research community, lowering the barrier to vision model explainability and debugging.</li>
+</ol>
+
+<h2>1.6 Report Organization</h2>
+
+<p>
+The remainder of this report is organized as follows: Section 2 reviews related work in explainable AI for vision models. Section 3 describes the datasets used for experimentation and preprocessing strategies. Section 4 presents the proposed methodology, including the unified schema, extractors, metrics, screening engine, and intervention loop. Section 5 details the experimental setup and presents results. Section 6 provides in-depth analysis of the XAI integration, demonstrating how the framework explains model behavior. Section 7 conducts an ablation study to assess the impact of individual components. Section 8 concludes the report and outlines directions for future work.
+</p>
+
+<div class="page-break"></div>
+
+</body>
+</html>
